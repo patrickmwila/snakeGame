@@ -49,6 +49,18 @@ class Snake:
         # move the first snake_segment to a new x & y position
         self.snake_head.forward(MOVE_DISTANCE)
 
+    def reset_snake(self):
+        """Resets the snake turtle"""
+
+        # move the current snake turtles to a hidden location...
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+
+        # reset
+        self.segments.clear()
+        self.set_position()
+        self.snake_head = self.segments[0]
+
     def up(self):
         """Sets the heading of the first snake_segment 90 degrees north"""
         if self.snake_head.heading() != DOWN:
